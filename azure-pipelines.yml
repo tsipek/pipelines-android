@@ -60,13 +60,6 @@ steps:
     apkFile: '**/*.apk'
     serviceEndpoint: 'yourGooglePlayServiceConnectionName'
     track: 'internal'
-
-- task: GooglePlayRelease@2
-  inputs:
-    apkFile: '**/*.apk'
-    serviceEndpoint: 'yourGooglePlayServiceConnectionName'
-    track: 'internal'
-
 - task: GooglePlayPromote@2
   inputs:
     packageName: 'com.yourCompany.appPackageName'
