@@ -56,7 +56,7 @@ steps:
     #isMandatory: false # Optional
     #distributionGroupId: # Optional
 - task: GooglePlayRelease@2
-inputs:
+  inputs:
     apkFile: '**/*.apk'
     serviceEndpoint: 'yourGooglePlayServiceConnectionName'
     track: 'internal'
