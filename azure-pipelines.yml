@@ -55,8 +55,3 @@ steps:
     #releaseNotesFile: # Required when releaseNotesOption == File
     #isMandatory: false # Optional
     #distributionGroupId: # Optional
-- task: GooglePlayRelease@2
-  inputs:
-    apkFile: '**/*.apk'
-    serviceEndpoint: 'yourGooglePlayServiceConnectionName'
-    track: 'internal'
