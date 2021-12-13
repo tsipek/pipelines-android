@@ -32,3 +32,50 @@ steps:
     artifactName: 'drop'
     artifactType: 'container'
   displayName: Publish artifacts
+- task: CopyFiles@2
+  inputs:
+    contents: '**/*.apk'
+    targetFolder: '$(build.artifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+# App Center distribute
+# Distribute app builds to testers and users via Visual Studio App Center
+- task: AppCenterDistribute@1
+  inputs:
+    serverEndpoint: 
+    appSlug: 
+    appFile: 
+    #symbolsOption: 'Apple' # Optional. Options: apple
+    #symbolsPath: # Optional
+    #symbolsPdbFiles: '**/*.pdb' # Optional
+    #symbolsDsymFiles: # Optional
+    #symbolsMappingTxtFile: # Optional
+    #symbolsIncludeParentDirectory: # Optional
+    #releaseNotesOption: 'input' # Options: input, file
+    #releaseNotesInput: # Required when releaseNotesOption == Input
+    #releaseNotesFile: # Required when releaseNotesOption == File
+    #isMandatory: false # Optional
+    #distributionGroupId: # Optional
+- task: GooglePlayRelease@2
+inputs:
+    apkFile: '**/*.apk'
+    serviceEndpoint: 'yourGooglePlayServiceConnectionName'
+    track: 'internal'
+
+- task: GooglePlayRelease@2
+  inputs:
+    apkFile: '**/*.apk'
+    serviceEndpoint: 'yourGooglePlayServiceConnectionName'
+    track: 'internal'
+
+- task: GooglePlayPromote@2
+  inputs:
+    packageName: 'com.yourCompany.appPackageName'
+    serviceEndpoint: 'yourGooglePlayServiceConnectionName'
+    sourceTrack: 'internal'
+    destinationTrack: 'alpha'
+
+- task: GooglePlayIncreaseRollout@1
+  inputs:
+    packageName: 'com.yourCompany.appPackageName'
+    serviceEndpoint: 'yourGooglePlayServiceConnectionName'
+    userFraction: '0.5' # 0.0 to 1.0 (0% to 100%)
