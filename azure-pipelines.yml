@@ -60,3 +60,12 @@ steps:
       echo '---'
       $ANDROID_HOME/platform-tools/adb devices
   displayName: 'start Android emulator'
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'Appcenter'
+    appSlug: 'https://appcenter.ms/users/tomasz.sipek-gmail.com/apps/test6'
+    appFile: 
+    buildVersion: '1'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'test'
+    destinationType: 'groups'
